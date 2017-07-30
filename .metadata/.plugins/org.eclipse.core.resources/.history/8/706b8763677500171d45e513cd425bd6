@@ -15,7 +15,7 @@ public class Person
 	 }
 	 public Person(String name)
 	 {
-		 this(name, "", "", "");
+		 this(name, " ", "", "");
 		 
 	 }
 	 public Person(String name, String houseName, String school, String bloodStatus)

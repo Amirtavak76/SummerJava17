@@ -1,0 +1,18 @@
+package entityTests;
+import entities.Person;
+
+public class PersonTest 
+{
+	public boolean PersonTest()
+	{
+		Person Test = new Person();
+		Test.toString();
+		String temp = new String();
+		temp = "AmirTavakoli" + '\n' +  "" + '\n' + "" + '\n' + "" + '\n';
+		if(temp == Test.toString())
+		{
+			return false;
+		}
+		return false;
+	}
+}

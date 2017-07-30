@@ -12,7 +12,6 @@ INDEX VERSION 1.130+C:\Users\Amir Tavakoli\Documents\SummerJava\SummerJava17\.me
 1056031855.index
 134360950.index
 1924480154.index
-1218830951.index
 4005617011.index
 189530877.index
 3145607036.index
