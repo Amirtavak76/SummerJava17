@@ -31,8 +31,4 @@ public class Person
 		 temp = _personName + '\n' + _personHouseName + '\n' + _personSchool + '\n' +_personBloodStatus + '\n' ;
 		 return temp;
 	 }
-	 public String getPersonName()
-	 {
-	        return _personName;
-	 }
 }
