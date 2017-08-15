@@ -3,4 +3,20 @@
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="entities.Person"/>
 <fullyQualifiedTypeName name="entityTests.PersonTest"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="java.util.Vector"/>
+<fullyQualifiedTypeName name="entities.Enum.Grades"/>
+<fullyQualifiedTypeName name="entities.Enum.BloodStatus"/>
+<fullyQualifiedTypeName name="entities.School"/>
+<fullyQualifiedTypeName name="entityTests.SchoolTest"/>
+<fullyQualifiedTypeName name="entities.Course"/>
+<fullyQualifiedTypeName name="entityTests.CourseTest"/>
+<fullyQualifiedTypeName name="entities.House"/>
+<fullyQualifiedTypeName name="entityTests.HouseTest"/>
+<fullyQualifiedTypeName name="entities.Professor"/>
+<fullyQualifiedTypeName name="entityTests.ProfessorTest"/>
+<fullyQualifiedTypeName name="entities.Students"/>
+<fullyQualifiedTypeName name="entities.FinishedCourse"/>
+<fullyQualifiedTypeName name="entityTests.StudentsTest"/>
 </qualifiedTypeNameHistroy>

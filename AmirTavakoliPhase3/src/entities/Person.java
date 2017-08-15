@@ -1,5 +1,7 @@
 package entities;
 
+import entities.Enum.BloodStatus;
+
 public class Person
 {
 	private String _name;
@@ -53,32 +55,32 @@ public class Person
 	
 	//Setters:
 	
-		public void setName(String name)
-		{
-			_name = name;
-		}
-		public void setHouseName(House houseName)
-		{
-			_house = houseName;
-		}
-		public void setBloodStatus(BloodStatus bloodStatus)
-		{
-			_bloodStatus = bloodStatus;
-		}
-		public void setSchool(School school)
-		{
-			_school = school;
-		}
-		public void setBirthDay(String birthDay)
-		{
-			_birthDay = birthDay;
-		}
-		
-		public String toString()
-		{
-			String temp = new String();
-			temp += "Name:" + _name + "\n" + "House: " + _house + "\n" + "BloodStatus: " + _bloodStatus + "\n" + "School: " + _school + "\n" + "BirthDay: " + _birthDay;
-			return temp;
-		}
+	public void setName(String name)
+	{		
+		_name = name;
+	}
+	public void setHouseName(House houseName)
+	{
+		_house = houseName;
+	}
+	public void setBloodStatus(BloodStatus bloodStatus)
+	{
+		_bloodStatus = bloodStatus;
+	}
+	public void setSchool(School school)
+	{
+		_school = school;
+	}
+	public void setBirthDay(String birthDay)
+	{	
+		_birthDay = birthDay;
+	}
+	
+	public String toString()
+	{
+		String temp = new String();
+		temp += "Name:" + _name + "\n" + "House: " + _house + "\n" + "BloodStatus: " + _bloodStatus + "\n" + "School: " + _school + "\n" + "BirthDay: " + _birthDay;
+		return temp;
+	}
 	
 }

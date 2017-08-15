@@ -1,0 +1,24 @@
+package entityTests;
+
+import entities.FinishedCourse;
+import entities.Students;
+
+public class FinishedCourseTest 
+{
+	//Constructor Test;
+	
+		public boolean constructorTest()
+		{
+			FinishedCourse Test = new FinishedCourse();
+			String temp = new String();
+			temp +=  null;
+			if (temp.equals(Test.toString()))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+}

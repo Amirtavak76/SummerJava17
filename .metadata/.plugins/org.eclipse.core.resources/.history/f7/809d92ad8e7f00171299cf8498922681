@@ -1,0 +1,99 @@
+package entities;
+
+import entityTests.CourseTest;
+import entityTests.HouseTest;
+import entityTests.PersonTest;
+import entityTests.ProfessorTest;
+import entityTests.SchoolTest;
+
+public class Main
+{
+	public static void main(String args[])
+	{
+		
+		//Test of Constructor of Person 
+		
+		
+		PersonTest test1 = new PersonTest();
+		if(test1.constructorTest())
+		{
+			System.out.println("The constructor of Person class is Okay");
+		}
+		else
+		{
+			System.out.println("Wrong");
+		}
+		
+		//Test of Getter of Person
+		
+		if(test1.getTest())
+		{
+			System.out.println("The getter of Person is okay");
+		}
+		else
+		{
+			System.out.println("Wrong");
+		}
+		
+		
+		//Test of Constructor of School
+		
+		SchoolTest test2 = new SchoolTest();
+		if(test2.constructorTest())
+		{
+			System.out.println("The constructor of School class is Okay");
+		}
+		else
+		{
+			System.out.println("Wrong");
+		}
+		
+		//Test of Constructor of Course
+		
+		CourseTest test3 = new CourseTest();
+		if(test3.constructorTest())
+		{
+			System.out.println("The constructor of Course class is Okay");
+		}
+		else
+		{
+			System.out.println("Wrong");
+		}
+		
+		//Test of Constructor of House
+		
+		HouseTest test4 = new HouseTest();
+		if(test4.constructorTest())
+		{
+			System.out.println("The constructor of House class is Okay");
+		}
+		else
+		{
+			System.out.println("Wrong");
+		}
+		
+		//Test of Constructor of House
+		
+			ProfessorTest test5 = new ProfessorTest();
+			if(test5.constructorTest())
+			{
+				System.out.println("The constructor of Professor class is Okay");
+			}
+			else
+			{
+				System.out.println("Wrong");
+			}
+			
+			//Test of Constructor of House
+			
+			ProfessorTest test6 = new ProfessorTest();
+			if(test6.constructorTest())
+			{
+				System.out.println("The constructor of Students class is Okay");
+			}
+			else
+			{
+				System.out.println("Wrong");
+			}
+	}
+}

@@ -1,0 +1,50 @@
+package entities;
+
+import entityTests.CourseTest;
+import entityTests.PersonTest;
+import entityTests.SchoolTest;
+
+public class Main
+{
+	public static void main(String args[])
+	{
+		
+		//Test of Constructor of Person 
+		
+		
+		PersonTest test1 = new PersonTest();
+		if(test1.constructorTest())
+		{
+			System.out.println("The constructor of Person class is Okay");
+		}
+		else
+		{
+			System.out.println("Wrong");
+		}
+		
+		//Test of Constructor of School
+		
+		SchoolTest test2 = new SchoolTest();
+		if(test2.constructorTest())
+		{
+			System.out.println("The constructor of School class is Okay");
+		}
+		else
+		{
+			System.out.println("Wrong");
+		}
+		
+		//Test of Constructor of Course
+		
+		CourseTest test3 = new CourseTest();
+		if(test3.constructorTest())
+		{
+			System.out.println("The constructor of Course class is Okay");
+		}
+		else
+		{
+			System.out.println("Wrong");
+		}
+		
+	}
+}

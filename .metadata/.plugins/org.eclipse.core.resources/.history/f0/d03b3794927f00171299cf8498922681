@@ -1,0 +1,23 @@
+package entityTests;
+
+import entities.School;
+
+public class SchoolTest
+{
+	
+	//Constructor Test;
+	
+	public boolean constructorTest()
+	{
+		School Test = new School("Beheshti");
+		String temp = new String("Beheshti" + 0 + false + null + null + null + null + null);
+		if (temp.equals(Test.toString()))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+}

@@ -1,0 +1,22 @@
+package entities;
+
+import entityTests.PersonTest;
+
+public class Main
+{
+	public static void main(String args[])
+	{
+		System.out.println("Fuck Java!");
+		
+		
+		PersonTest test = new PersonTest();
+		if(test.constructorTest())
+		{
+			System.out.println("The constructor of Person class is Okay");
+		}
+		else
+		{
+			System.out.println("Wrong");
+		}
+	}
+}
