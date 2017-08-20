@@ -1,5 +1,6 @@
 package entityTests;
 
+import entities.House;
 import entities.Person;
 
 public class PersonTest
@@ -25,7 +26,7 @@ public class PersonTest
 	
 	//Getter Test:
 	
-	public boolean getterTest()
+	public boolean getNameTest()
 	{
 		Person getterTest = new Person("Amir");
 		String expected = "Amir";
@@ -39,8 +40,6 @@ public class PersonTest
 			return false;
 		}
 	}
-	
-	
 	
 
 }

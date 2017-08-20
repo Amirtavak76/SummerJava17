@@ -52,7 +52,7 @@ public class FinishedCourse extends Course
 	public String toString()
 	{
 		String temp = new String();
-		temp += "" + null + _name + null + null + null + null
+		temp += "" + null + _name + null + null + null + null;
 		return temp;
 	}
 }

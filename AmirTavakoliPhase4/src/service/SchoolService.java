@@ -1,5 +1,6 @@
 package service;
-
-public class SchoolService {
-
+import entities.*;
+public class SchoolService 
+{
+	
 }

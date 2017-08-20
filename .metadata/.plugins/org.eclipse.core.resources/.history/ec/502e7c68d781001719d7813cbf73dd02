@@ -1,0 +1,15 @@
+package service;
+import entities.*;
+public class SchoolService 
+{
+	private School _school;
+	
+	public House SortingHat(Students name)
+	{
+		House house = null;
+		System.out.println("Welcome to the enterance house test!!\n");
+		System.out.println("Here there are some questions that you will answer them, according to your answers you will enter to the house that you have its qualities\n");
+		System.out.println("1. Are you a brave Person? \n 1) Perfectly yes \n 2) Probably yes /n 3) Probably not /n 4) No I am not");
+		return house;
+	}
+}
