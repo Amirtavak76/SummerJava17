@@ -20,4 +20,7 @@
 <fullyQualifiedTypeName name="java.util.Scanner"/>
 <fullyQualifiedTypeName name="entities.Course"/>
 <fullyQualifiedTypeName name="entities.House"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="java.io.BufferedReader"/>
+<fullyQualifiedTypeName name="java.io.FileReader"/>
 </qualifiedTypeNameHistroy>

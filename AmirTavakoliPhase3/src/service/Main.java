@@ -1,5 +1,8 @@
 package service;
 
+
+import java.io.FileNotFoundException;
+
 import entities.*;
 
 public class Main
@@ -8,6 +11,12 @@ public class Main
 	{
 		Students name = null;
 		SchoolService service = new SchoolService();
-		service.SortingHat(name);
+		String data = null;
+		try {
+			service.getData(data);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

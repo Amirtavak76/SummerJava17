@@ -1,0 +1,16 @@
+package service;
+
+import java.io.IOException;
+
+import entities.*;
+
+public class Main
+{
+	public static void main(String arg[]) throws IOException
+	{
+		Students name = null;
+		SchoolService service = new SchoolService();
+		String data = null;
+		service.getData(data);
+	}
+}

@@ -5,6 +5,7 @@ import entities.*;
 public class SchoolService 
 {
 	private School _school;
+	private Vector<School> _allSchools;
 	
 	public House SortingHat(Students _name)
 	{
