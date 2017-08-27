@@ -1,0 +1,31 @@
+import java.util.*;
+
+import entities.*;
+import service.*;
+public class Main
+{
+	public static void main(String args[])
+	{
+		while(true)
+		{
+			SchoolService schoolService = new SchoolService();
+			CourseService courseService = new CourseService();
+			Scanner scanner = new Scanner(System.in);
+			System.out.println("Welcome to the Harry Potter online wizard\n\n");
+			System.out.println("Here is the main menu and you can choose the operation you want\n");
+			System.out.println("Choose whatever you want with an integer!!");
+			System.out.println("1. School Menu \n2. Course Menu \n");
+			int choise = scanner.nextInt();
+			switch(choise)
+			{
+			case 1:
+			schoolService.schoolMenu();
+			break;
+			case 2:
+				courseService.courseMenu();
+			default:
+			System.out.println("You have entered a wrong number!!");
+			}
+		}
+	}
+}

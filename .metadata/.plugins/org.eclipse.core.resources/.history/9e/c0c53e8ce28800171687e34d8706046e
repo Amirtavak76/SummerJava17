@@ -1,0 +1,12 @@
+import entities.*;
+import service.*;
+public class Main
+{
+	public static void main(String args[])
+	{
+		SchoolService sort = new SchoolService();
+		SchoolService getData = new SchoolService();
+		SchoolService setData = new SchoolService();
+		getData.setData();
+	}
+}

@@ -1,0 +1,55 @@
+//import java.util.*;
+//
+//import entities.*;
+//import service.*;
+//public class Main
+//{
+//	public static void main(String args[])
+//	{
+//		SchoolService service = new SchoolService();
+//		Scanner scanner = new Scanner(System.in);
+//		SchoolService sort = new SchoolService();
+//		SchoolService getData = new SchoolService();
+//		SchoolService setData = new SchoolService();
+////			System.out.println("Welcome to the Harry Potter online wizard\n\n");
+////			System.out.println("Here is the main menu and you can choose the operation you want\n");
+////			System.out.println("Choose whatever you want with an integer!!");
+////			System.out.println("1. School Menu \n2. Student Menu \n");
+////			int choise = scanner.nextInt();
+////			switch(choise)
+////			{
+////			case 1:
+////				service.schoolMenu();
+////				break;
+////			}
+//			getData.getData(null);
+//	}
+//}
+
+import java.util.*;
+
+import entities.*;
+import service.*;
+public class Main
+{
+	public static void main(String args[])
+	{
+		Scanner scanner = new Scanner(System.in);
+		SchoolService sort = new SchoolService();
+		SchoolService getData = new SchoolService();
+		SchoolService setData = new SchoolService();
+		System.out.println("Do you want to read data or write dara?");
+		System.out.println("1. Read\n2. Write");
+		int choise = 0;
+		choise = scanner.nextInt();
+		if(choise == 1)
+		{
+			getData.getData(null);
+		}
+		else if (choise == 2)
+		{
+			setData.setData();
+		}
+
+	}
+}

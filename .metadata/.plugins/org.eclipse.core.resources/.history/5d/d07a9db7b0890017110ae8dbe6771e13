@@ -1,0 +1,577 @@
+package service;
+import java.io.*;
+import java.util.*;
+
+import entities.*;
+public class SchoolService 
+{
+	private String _school;
+	private Vector<String> _allSchools;
+	
+	
+	// Get data from file
+	
+	
+	public void getData(String data)
+	{
+		int house = 0, student = 0, professor = 0, course = 0;
+		Vector<String> list = new Vector<String>();
+		try
+		{
+			  File file = new File("SchoolDB.txt");
+			  if (file.exists())
+			  {
+				  System.out.println("***    Reading file...    ***\n\n");
+				  BufferedReader input = new BufferedReader(new FileReader(file));
+				  String line;
+				  while ((line = input.readLine()) != null)
+				  {
+					  list.add(line);
+				  }
+				  for(int i = 0; i < list.size(); i++)
+				  {
+					  if(i % 18 == 0)
+					  {
+						  System.out.print("The School Name is: ");
+						  System.out.println(list.elementAt(i));
+						  _school = list.elementAt(i);
+					  }
+					  if(i % 18 == 1)
+					  {
+						  System.out.print("The number of the houses that the school has: ");
+						  System.out.println(list.elementAt(i));
+						  house = Integer.parseInt(list.elementAt(i));
+						  System.out.print("The house names are: ");
+						  for(int j = i + 1; j <= house + 1; j++)
+						  {
+							  System.out.print(list.elementAt(j) + ", ");
+							  _school = list.elementAt(i);
+						  } 
+					  }
+					  if(i % 18 == (2 + house))
+					  {						
+						  System.out.print("\nThe number of the students that the school has: ");
+						  System.out.println(list.elementAt(i));
+						  _school = list.elementAt(i);
+						  student = Integer.parseInt(list.elementAt(i));
+						  System.out.print("The student names are: ");
+						  for(int j = i + 1; j <= student + i; j++)
+						  {
+							  System.out.print(list.elementAt(j) + ", ");
+							  _school = list.elementAt(i);
+						  }
+					  }
+					  if (i % 18 == 3 + house + student)
+					  {
+						  System.out.print("\nThe number of the professors that the school has: ");
+						  System.out.println(list.elementAt(i));
+						  _school = list.elementAt(i);
+						  professor = Integer.parseInt(list.elementAt(i));
+						  System.out.print("The professor names are: ");
+						  for (int j = i + 1; j <= professor + i; j++)
+						  {
+							  System.out.print(list.elementAt(j) + ", ");
+							  _school = list.elementAt(i);
+						  }
+					  }
+					  if (i % 18 == 4 + house + student + professor)
+					  {
+						  System.out.print("\nThe number of the courses that the school has: ");
+						  System.out.println(list.elementAt(i));
+						  _school = list.elementAt(i);
+						  course = Integer.parseInt(list.elementAt(i));
+						  System.out.print("The course names are: ");
+						  for (int j = i + 1; j <= course + i; j++)
+						  {
+							  System.out.print(list.elementAt(j) + ", ");
+							  _school = list.elementAt(i);
+						  }	
+					  }
+					  if (i % 18 == 5 + house + student + professor + course)
+					  {
+						  System.out.print("\nThe location of the school is: ");
+						  System.out.println(list.elementAt(i));
+						  _school = list.elementAt(i);
+						  System.out.print("\n");
+					  }
+				  }
+				  _allSchools.addElement(_school);
+				  System.out.println("***    Finished Reading file...    ***");
+			  }
+			  else
+			  {
+				  System.out.println(file.getAbsolutePath() + " not exist");
+			  }
+		}
+		catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	// Set Data to the file 
+	
+	
+	public void setData()
+	{
+		Scanner scanner = new Scanner (System.in);
+		String schoolName, houseName, studentsName, professorsName, coursesName;
+		int numOfHouse, numOfStudents, numOfProfessors, numOfCourses;
+		char choise;
+		try
+		{
+			File file = new File("SchoolDB.txt");
+			if(!file.exists())
+			{
+				file.createNewFile();
+				System.out.println("Creating new file...");
+			}
+			else
+			{
+				System.out.println("Updating file...");
+			}
+			BufferedWriter output = new BufferedWriter(new FileWriter(file));
+			while(true)
+			{
+				System.out.println("Do you wanna add a new School to the system?");
+				System.out.println("Y. Yes\nN. No");
+				choise = scanner.next().charAt(0);
+				if(choise == 'y')
+				{
+					System.out.println("Enter the school name you wanna added to the system:");
+					schoolName = scanner.next();
+					output.write(schoolName + "\n");
+					System.out.println("Enter the number of houses the school has:");
+					numOfHouse = scanner.nextInt();
+					output.write(numOfHouse + "\n");
+					for (int i = 0; i < numOfHouse; i++)
+					{
+						System.out.println("Enter the school house name: ");
+						houseName = scanner.next();
+						output.write(houseName + "\n");
+					}
+					System.out.println("Enter the number of students the school has:");
+					numOfStudents = scanner.nextInt();
+					output.write(numOfStudents + "\n");
+					for (int i = 0; i < numOfStudents; i++)
+					{
+						System.out.println("Enter the school students name: ");
+						studentsName = scanner.next();
+						output.write(studentsName + "\n");
+					}
+					System.out.println("Enter the number of professors the school has:");
+					numOfProfessors = scanner.nextInt();
+					output.write(numOfProfessors + "\n");
+					for (int i = 0; i < numOfProfessors; i++)
+					{
+						System.out.println("Enter the school professors name: ");
+						professorsName = scanner.next();
+						output.write(professorsName + "\n");
+					}
+					System.out.println("Enter the number of courses the school has:");
+					numOfCourses = scanner.nextInt();
+					output.write(numOfCourses + "\n");
+					for (int i = 0; i < numOfCourses; i++)
+					{
+						System.out.println("Enter the school courses name: ");
+						coursesName = scanner.next();
+						output.write(coursesName + "\n");
+					}
+				}
+				else if (choise == 'n')
+				{
+					break;
+				}
+				else
+				{
+					System.out.println("Please input a variable choise!!");
+				}
+			}
+			output.close();
+			System.out.println("Finish writing to file!");
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	// Get school by its name
+	
+	
+	public void getSchoolByName(String schoolName)
+	{
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter the name of the school you want: ");
+		Vector<String> list = new Vector<String>();
+		int house = 0, student = 0, professor = 0, course = 0;
+		schoolName = scanner.nextLine();
+		try
+		{
+			  File file = new File("SchoolDB.txt");
+			  if (file.exists())
+			  {
+				  System.out.println("***    Reading file...    ***\n\n");
+				  BufferedReader input = new BufferedReader(new FileReader(file));
+				  String line;
+				  while ((line = input.readLine()) != null)
+				  {
+					  list.add(line);
+				  }
+			  }
+		}
+		catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		for(int i = 0; i < list.size(); i++)
+		{
+			if (schoolName.equals(list.elementAt(i)))
+			{
+				int line = i;
+				System.out.println("The school name you have searched is: " + list.elementAt(line));
+				System.out.println("The number of the houses of the school you have searched is: " + list.elementAt(i + 1));
+				house = Integer.parseInt(list.elementAt(i + 1)); 
+				System.out.print("The name of the houses are: ");
+				for (int j = i + 2; j <= house + 1; j++)
+				{
+					System.out.print(list.elementAt(j) + ", ");
+				}
+			}
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public House SortingHat(Student _name)
+	{
+		House house = null;
+		System.out.println("Please enter your name:");
+		Scanner scanner = new Scanner (System.in);
+		String name = scanner.nextLine();
+		System.out.println("Welcome to the enterance house test Mr." + name + "\n");
+		System.out.println("Here there are some questions that you will answer them, according to your answers you will enter to the house that you have its qualities\n");
+		System.out.println("Please answer the questions with number 1 to 4\n");
+		System.out.println("1. Are you a brave Person? \n  1) Perfectly yes \n  2) Probably yes \n  3) Probably not \n  4) No I am not");
+		Scanner choice = new Scanner(System.in);
+		int b = choice.nextInt();
+		int house1 = 0;
+		if(b == 1)
+		{
+			house1 += 8;
+		}
+		if(b == 2)
+		{
+			house1 += 6;
+		}
+		if(b == 3)
+		{
+			house1 += 4;
+		}
+		if(b == 4)
+		{
+			house1 += 2;
+		}
+		else
+		{
+			System.out.println("You entered a wrong number!!");
+		}
+		System.out.println("2. What is your nerve rank?");
+		System.out.println(" 1) Upper 75\n 2) 50 to 75\n 3)25 to 50\n 4) Lower 25\n");
+		int c = choice.nextInt();
+		if(c == 1)
+		{
+			house1 += 8;
+		}
+		if(c == 2)
+		{
+			house1 += 6;
+		}
+		if(c == 3)
+		{
+			house1 += 4;
+		}
+		if(c == 4)
+		{
+			house1 += 2;
+		}
+		else
+		{
+			System.out.println("You entered a wrong number!!");
+		}
+		
+		System.out.println("3. Do you have chivarly in your behavior?1");
+		System.out.println(" 1) Perfectly yes \n 2) Probably yes \n 3) Probably not \n 4) No I am not");
+		int d = choice.nextInt();
+		if(d == 1)
+		{
+			house1 += 8;
+		}
+		if(d == 2)
+		{
+			house1 += 6;
+		}
+		if(d == 3)
+		{
+			house1 += 4;
+		}
+		if(d == 4)
+		{
+			house1 += 2;
+		}
+		else
+		{
+			System.out.println("You entered a wrong number!!");
+		}
+		
+		System.out.println("4. Are you an ambitious?\n");
+		System.out.println(" 1) Perfectly yes \n 2) Probably yes \n 3) Probably not \n 4) No I am not");
+		int house2 = 0;
+		int e = choice.nextInt();
+		if(e == 1)
+		{
+			house2 += 12;
+		}
+		if(e == 2)
+		{
+			house2 += 9;
+		}
+		if(e == 3)
+		{
+			house2 += 6;
+		}
+		if(e == 4)
+		{
+			house2 += 3;
+		}
+		else
+		{
+			System.out.println("You entered a wrong number!!");
+		}
+		
+		System.out.println("5. Are you a resourceful person?\n");
+		System.out.println(" 1) Perfectly yes \n 2) Probably yes \n 3) Probably not \n 4) No I am not");
+		int f = choice.nextInt();
+		if(f == 1)
+		{
+			house2 += 12;
+		}
+		if(f == 2)
+		{
+			house2 += 9;
+		}
+		if(f == 3)
+		{
+			house2 += 6;
+		}
+		if(f == 4)
+		{
+			house2 += 3;
+		}
+		else
+		{
+			System.out.println("You entered a wrong number!!");
+		}
+		
+		System.out.println("6. What is the rank of your IQ\n");
+		System.out.println(" 1) Upper 75\n 2) 50 to 75\n 3)25 to 50\n 4) Lower 25\n");
+		int house3 = 0;
+		int g = choice.nextInt();
+		if(g == 1)
+		{
+			house3 += 12;
+		}
+		if(g == 2)
+		{
+			house3 += 9;
+		}
+		if(g == 3)
+		{
+			house3 += 6;
+		}
+		if(g == 4)
+		{
+			house3 += 3;
+		}
+		else
+		{
+			System.out.println("You entered a wrong number!!");
+		}
+		
+		System.out.println("7. Are you a knowledgable person?\n");
+		System.out.println(" 1) Perfectly yes \n 2) Probably yes \n 3) Probably not \n 4) No I am not");
+		int h = choice.nextInt();
+		if(h == 1)
+		{
+			house3 += 12;
+		}
+		if(h == 2)
+		{
+			house3 += 9;
+		}
+		if(h == 3)
+		{
+			house3 += 6;
+		}
+		if(h == 4)
+		{
+			house3 += 3;
+		}
+		else
+		{
+			System.out.println("You entered a wrong number!!");
+		}
+		
+		System.out.println("8. Are you a hard work Person? \n");
+		System.out.println(" 1) Perfectly yes \n 2) Probably yes \n 3) Probably not \n 4) No I am not");
+		int house4 = 0;
+		int i = choice.nextInt();
+		if(i == 1)
+		{
+			house4 += 6;
+		}
+		if(i == 2)
+		{
+			house4 += 4;
+		}
+		if(i == 3)
+		{
+			house4 += 2;
+		}
+		if(i == 4)
+		{
+			house4 += 0;
+		}
+		else
+		{
+			System.out.println("You entered a wrong number!!");
+		}
+		
+		System.out.println("9. Do you have dedication in your behavior? \n");	
+		System.out.println(" 1) Perfectly yes \n 2) Probably yes \n 3) Probably not \n 4) No I am not");
+		int j = choice.nextInt();
+		if(j == 1)
+		{
+			house4 += 6;
+		}
+		if(j == 2)
+		{
+			house4 += 4;
+		}
+		if(j == 3)
+		{
+			house4 += 2;
+		}
+		if(j == 4)
+		{
+			house4 += 0;
+		}
+		else
+		{
+			System.out.println("You entered a wrong number!!");
+		}
+		
+		System.out.println("10. Do you have patience in your behavior? \n");
+		System.out.println(" 1) Perfectly yes \n 2) Probably yes \n 3) Probably not \n 4) No I am not");
+		int k = choice.nextInt();
+		if(k == 1)
+		{
+			house4 += 6;
+		}
+		if(k == 2)
+		{
+			house4 += 4;
+		}
+		if(k == 3)
+		{
+			house4 += 2;
+		}
+		if(k == 4)
+		{
+			house4 += 0;
+		}
+		else
+		{
+			System.out.println("You entered a wrong number!!");
+		}
+		
+		System.out.println("11. Do you have loyality in your behavior? \n");
+		System.out.println(" 1) Perfectly yes \n 2) Probably yes \n 3) Probably not \n 4) No I am not");
+		int l = choice.nextInt();
+		if(l == 1)
+		{
+			house4 += 6;
+		}
+		if(l == 2)
+		{
+			house4 += 4;
+		}
+		if(l == 3)
+		{
+			house4 += 2;
+		}
+		if(l == 4)
+		{
+			house4 += 0;
+		}
+		else
+		{
+			System.out.println("You entered a wrong number!!");
+		}
+		
+		
+		if(house1 > house2 && house1 > house3 && house1 > house4)
+		{
+			System.out.println("According to your qualities, the Griffindor house is the best one for you");
+		}
+		else if (house2 > house1 && house2 > house3 && house2 > house4)
+		{
+			System.out.println("According to your qualities, the Slytherin house is the best one for you");
+		}
+		else if (house3 > house2 && house3 > house1 && house3 > house4)
+		{
+			System.out.println("According to your qualities, the Revenclaw house is the best one for you");
+		}
+		else if(house4 > house2 && house4 > house3 && house4 > house1)
+		{
+			System.out.println("According to your qualities, the Hupplepuff house is the best one for you");
+		}
+		else
+		{
+			System.out.println("No house found! Try again");
+		}
+		return house;
+	}
+	
+	
+	
+
+	
+	
+}

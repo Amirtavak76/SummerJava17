@@ -1,0 +1,184 @@
+package service;
+
+import java.io.*;
+import java.util.*;
+
+public class StudentService
+{
+	private String _student;
+	
+	// Student Menu
+	
+	public void studentMenu()
+
+	{
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Welcome to the student menu\n");
+		System.out.println("What do you wanna do? Choose it with an integer.\n");
+		System.out.println("1. Create a new student \n2. Search student via name \n3. Edit student information \n4. Show all student \n5. Delete a student");
+		int choise = scanner.nextInt();
+		switch(choise)
+		{
+		case 1:
+			System.out.println("Not available");
+			break;
+		
+		case 2:
+			getStudentByName(null);
+			break;
+			
+		case 3:
+			System.out.println("Not available now");
+			break;
+			
+		case 4:
+			getData(null);
+			break;
+			
+		case 5:
+			System.out.println("Not available");
+			break;
+		default:
+			System.out.println("You have entered a wrong number!!");
+		}
+	}
+	
+	// Get file from data
+	
+	public void getData(String data)
+	{
+		Vector<String> list = new Vector<String>();
+		try
+		{
+			File file = new File("StudentDB.txt");
+			if (file.exists())
+			{
+				System.out.println("***    Reading file...    ***\n\n");
+				BufferedReader input = new BufferedReader(new FileReader(file));
+				String line;
+				while ((line = input.readLine()) != null)
+				{
+					list.add(line);
+				}
+				input.close();
+				int i = 0;
+				while(i != list.size())
+				{
+					System.out.println("The student name is: " + list.elementAt(i));
+					_student = list.elementAt(i);
+					i++;
+					if(i >= list.size())
+					{
+						break;
+					}
+					System.out.println("The student house name is: " + list.elementAt(i));
+					_student = list.elementAt(i);
+					i++;
+					if(i >= list.size())
+					{
+						break;
+					}
+					System.out.println("The student bloos status is: " + list.elementAt(i));
+					_student = list.elementAt(i);
+					i++;
+					if(i >= list.size())
+					{
+						break;
+					}
+					System.out.println("The student school is: " + list.elementAt(i));
+					_student = list.elementAt(i);
+					i++;
+					if(i >= list.size())
+					{
+						break;
+					}
+					System.out.println("The student birth day is: " + list.elementAt(i));
+					_student = list.elementAt(i);
+					i++;
+					if(i >= list.size())
+					{
+						break;
+					}
+					System.out.println("The number of courses that the student has: " + list.elementAt(i));
+					_student = list.elementAt(i);
+					int student = Integer.parseInt(list.elementAt(i));
+					System.out.print("The course names are: ");
+					for(int j = i + 1; j <= i + student; j++)
+					{
+						System.out.print(list.elementAt(j) + ", ");
+					}
+					System.out.println("\n\n*****\n");
+					i += student + 2;
+					if(i >= list.size())
+					{
+						break;
+					}
+				}
+			}
+			else
+			{
+				System.out.println(file.getAbsolutePath() + " not exist");
+			}
+		}
+		catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	// Get Student by Name
+	
+	public void getStudentByName(String studentName)
+	{
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter the name of the house you want: ");
+		Vector<String> list = new Vector<String>();
+		studentName = scanner.nextLine();
+		try
+		{
+			File file = new File("StudentDB.txt");
+			if (file.exists())
+			{
+				System.out.println("***    Reading file...    ***\n\n");
+				BufferedReader input = new BufferedReader(new FileReader(file));
+				String line;
+				while ((line = input.readLine()) != null)
+				{
+					list.add(line);
+				}
+			}
+		}
+		catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		for(int i = 0; i < list.size(); i++)
+		{
+			if(studentName.equals(list.elementAt(i)))
+			{
+				System.out.println("The student information is: ");
+				System.out.println("Name: " + list.elementAt(i));
+				System.out.println("House: " + list.elementAt(i + 1));
+				System.out.println("Blood Status" + list.elementAt(i + 2));
+				System.out.println("School: " + list.elementAt(i + 3));
+				System.out.println("BirthDay: " + list.elementAt(i + 4));
+				System.out.println("Number of Courses: " + list.elementAt(i + 5));
+				int course = Integer.parseInt(list.elementAt(i + 5));
+				System.out.print("Course Names :");
+				for(int j = i + 6; j <= i + course + 5; j++)
+				{
+					System.out.print(list.elementAt(j) + ", ");
+				}
+				System.out.println("\n\n*****\n");
+			}
+		}
+	}
+}

@@ -1,0 +1,27 @@
+import java.util.*;
+
+import entities.*;
+import service.*;
+public class Main
+{
+	public static void main(String args[])
+	{
+		Scanner scanner = new Scanner(System.in);
+		SchoolService sort = new SchoolService();
+		SchoolService getData = new SchoolService();
+		SchoolService setData = new SchoolService();
+		System.out.println("Do you want to read data or write dara?");
+		System.out.println("1. Read\n2. Write");
+		int choise = 0;
+		choise = scanner.nextInt();
+		if(choise == 1)
+		{
+			getData.getData(null);
+		}
+		else if (choise == 2)
+		{
+			setData.setData();
+		}
+
+	}
+}

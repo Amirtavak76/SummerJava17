@@ -1,0 +1,216 @@
+package service;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+import java.util.Vector;
+
+import entities.*;
+
+
+public class CourseService
+{
+	private String _course;
+	
+	
+	// CourseService menu
+	
+	public void courseMenu()
+	{
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Welcome to the course menu\n");
+		System.out.println("What do you wanna do? Choose it with an integer.\n");
+		System.out.println("1. Create a new course \n2. Search course via name \n3. Edit course information \n4. Show all courses \n5. Delete a course");
+		int choise = scanner.nextInt();
+		switch(choise)
+		{
+		case 1:
+			System.out.println("Not available");
+			break;
+		
+		case 2:
+			System.out.println("Not available");
+			break;
+			
+		case 3:
+			System.out.println("Not available now");
+			break;
+			
+		case 4:
+			getData();
+			break;
+			
+		case 5:
+			System.out.println("Not available");
+			break;
+		default:
+			System.out.println("You have entered a wrong number!!");
+		}
+	}
+	
+	
+	// Get data from file
+	
+	public void getData() 
+	{
+		Vector<String> list = new Vector<String>();
+		try
+		{
+			  File file = new File("SchoolDB.txt");
+			  if (file.exists())
+			  {
+				  System.out.println("***    Reading file...    ***\n\n");
+				  BufferedReader input = new BufferedReader(new FileReader(file));
+				  String line;
+				  while ((line = input.readLine()) != null)
+				  {
+					  list.add(line);
+				  }
+				  int i = 0;
+				  while(i != list.size())
+				  {
+					  System.out.println("The course name is: " + list.elementAt(i));
+					  _course = list.elementAt(i);
+					  i++;
+					  System.out.println("The course minGrade is: " + list.elementAt(i));
+					  _course = list.elementAt(i);
+					  i++;
+					  System.out.println("The course professor name is: " + list.elementAt(i));
+					  _course = list.elementAt(i);
+					  i++;
+					  System.out.println("The course year is: " + list.elementAt(i));
+					  _course = list.elementAt(i);
+					  i++;
+					  System.out.println("The number of the students of the course is: " + list.elementAt(i));
+					  _course = list.elementAt(i);
+					  int student = Integer.parseInt(list.elementAt(i));
+					  System.out.print("The students names are: ");
+					  for(int j = i + 1; j <= i + student; j++)
+					  {
+							System.out.print(list.elementAt(j) + ", ");
+							_course = list.elementAt(j);
+					  }
+					  System.out.println("\n\n****\n");
+					  i += student + 2;
+				  }
+			  }
+			  else
+			  {
+				  System.out.println(file.getAbsolutePath() + " not exist");
+			  }
+		}
+		catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+//	public void getData()
+//	{
+//		Vector<String> list = new Vector<String>();
+//		try
+//		{
+//			int student = 0;
+//			File file = new File("CourseDB.txt");
+//			if (file.exists())
+//			{
+//				System.out.println("***    Reading file...    ***\n");
+//				BufferedReader input = new BufferedReader(new FileReader(file));
+//				String line;
+//				while ((line = input.readLine()) != null)
+//				{
+//					list.add(line);
+//				}
+//				for (int i = 0; i < list.size(); i++)
+//				{
+//					if(i % 18 == 0 + student)
+//					{
+//						System.out.println("The course name is: " + list.elementAt(i));
+//						_course = list.elementAt(i);
+//					}
+//					if(i % 18 == 1)
+//					{
+//						System.out.println("The course minGrade is: " + list.elementAt(i));
+//						_course = list.elementAt(i);
+//					}
+//					if(i % 18 == 2)
+//					{
+//						System.out.println("The course professor name is: " + list.elementAt(i));
+//						_course = list.elementAt(i);
+//					}
+//					if(i % 18 == 3)
+//					{
+//						System.out.println("The course year is: " + list.elementAt(i));
+//						_course = list.elementAt(i);
+//					}
+//					if(i % 18 == 4)
+//					{
+//						System.out.println("The number of the students of the course is: " + list.elementAt(i));
+//						_course = list.elementAt(i);
+//						student = Integer.parseInt(list.elementAt(i));
+//						System.out.print("The students names are: ");
+//						for(int j = i + 1; j <= i + student; j++)
+//						{
+//							System.out.print(list.elementAt(j) + ", ");
+//							_course = list.elementAt(j);
+//						}
+//						System.out.println("\n\n****\n");
+//					}
+//				}
+//			}
+//			  else
+//			  {
+//				  System.out.println(file.getAbsolutePath() + " not exist");
+//			  }
+//		}
+//		catch (FileNotFoundException e)
+//		{
+//			e.printStackTrace();
+//		}
+//		catch (IOException e)
+//		{
+//			e.printStackTrace();
+//		}
+//	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

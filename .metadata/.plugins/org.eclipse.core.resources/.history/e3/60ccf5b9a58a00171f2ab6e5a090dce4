@@ -1,0 +1,126 @@
+package service;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+import java.util.Vector;
+
+import entities.*;
+
+public class PersonService 
+{
+	private Person _allPersons;
+	
+	// Person Menu
+	
+	public void personMenu()
+	{
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Welcome to the person menu\n");
+		System.out.println("What do you wanna do? Choose it with an integer.\n");
+		System.out.println("1. Create a new person \n2. Search person via name \n3. Edit person information \n4. Show all person \n5. Delete a person");
+		int choise = scanner.nextInt();
+		switch(choise)
+		{
+		case 1:
+			System.out.println("Not available");
+			break;
+		
+		case 2:
+			System.out.println("Not available");
+			break;
+			
+		case 3:
+			System.out.println("Not available now");
+			break;
+			
+		case 4:
+			getData(null);
+			break;
+			
+		case 5:
+			System.out.println("Not available");
+			break;
+		default:
+			System.out.println("You have entered a wrong number!!");
+		}
+	}
+	
+	// Get Data from file
+	
+	
+	public void getData(String data)
+	{
+		Vector<String> list = new Vector<String>();
+		try
+		{
+			File file = new File("PersonDB.txt");
+			if (file.exists())
+			{
+				System.out.println("***    Reading file...    ***\n\n");
+				BufferedReader input = new BufferedReader(new FileReader(file));
+				String line;
+				while ((line = input.readLine()) != null)
+				{
+					list.add(line);
+				}
+				input.close();
+				int i = 0;
+				while(i != list.size())
+				{
+					if(i >= list.size())
+					{
+						break;
+					}
+					System.out.println("The person  name is: " + list.elementAt(i));
+					i++;
+					if(i >= list.size())
+					{
+						break;
+					}
+					System.out.println("The person house name is: " + list.elementAt(i));
+					i++;
+					if(i >= list.size())
+					{
+						break;
+					}
+					System.out.println("The person blood status is: " + list.elementAt(i));
+					i++;
+					if(i >= list.size())
+					{
+						break;
+					}
+					System.out.println("The person school name is: " + list.elementAt(i));
+					i++;
+					if(i >= list.size())
+					{
+						break;
+					}
+					System.out.println("The person birth day is: " + list.elementAt(i));
+					i += 2;
+					if(i >= list.size())
+					{
+						break;
+					}
+					System.out.println("\n\n*****\n");
+				}
+			}
+			else
+			{
+				System.out.println(file.getAbsolutePath() + " not exist");
+			}
+		}
+		catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+}
