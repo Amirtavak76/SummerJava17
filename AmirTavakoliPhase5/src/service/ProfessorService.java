@@ -24,20 +24,25 @@ public class ProfessorService
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Welcome to the professor menu\n");
 		System.out.println("What do you wanna do? Choose it with an integer.\n");
-		System.out.println("1. Create a new professor \n2. Search professor via name \n3. Edit professor information \n4. Show all professor \n5. Delete a professor");
+		System.out.println("1. Create a new professor \n"
+				+ "2. Search professor via name \n"
+				+ "3. Show professor via name \n"
+				+ "4. Edit professor information \n"
+				+ "5. Show all professor \n"
+				+ "6. Delete a professor\n");
 		int choise = scanner.nextInt();
 		switch(choise)
 		{
 		case 1:
-			System.out.println("Not available");
+			setData();
 			break;
 		
 		case 2:
-			getProfessorByName(null);
+			searchProfessorByName(null);
 			break;
 			
 		case 3:
-			System.out.println("Not available now");
+			getProfessorByName(null);
 			break;
 			
 		case 4:
@@ -171,7 +176,8 @@ public class ProfessorService
 			{
 				System.out.println("Updating file...");
 			}
-			BufferedWriter output = new BufferedWriter(new FileWriter(file));
+			FileWriter output = new FileWriter(file, true);
+			BufferedWriter bw = new BufferedWriter(output);
 			while(true)
 			{
 				System.out.println("Do you wanna add a new Professor to the system?");
@@ -179,38 +185,47 @@ public class ProfessorService
 				choise = scanner.next().charAt(0);
 				if (choise == 'y')
 				{
-					System.out.println("Enter the Professor Name: ");
+					System.out.print("Complete the information of the new School.\n");
+					System.out.println("Name: ");
 					name = scanner.next();
-					output.write(name + "\n");
+					bw.write(name);
+					bw.newLine();
 					
-					System.out.println("Enter the Professor's house name: ");
+					System.out.println("House Name: ");
 					house = scanner.next();
-					output.write(house + "\n");
+					bw.write(house);
+					bw.newLine();
 					
-					System.out.println("Enter the Professor Blood Status: ");
+					System.out.println("Blood Status: ");
 					bloodStatus = scanner.next();
-					output.write(bloodStatus + "\n");
+					bw.write(bloodStatus);
+					bw.newLine();
 					
-					System.out.println("Enter the Professor School: ");
+					System.out.println("School: ");
 					school = scanner.next();
-					output.write(school + "\n");
+					bw.write(school);
+					bw.newLine();
 					
-					System.out.println("Enter the Professor BirthDay: ");
+					System.out.println("BirthDay: ");
 					birthDay = scanner.next();
-					output.write(birthDay + "\n");
+					bw.write(birthDay);
+					bw.newLine();
 					
-					System.out.println("Enter the Professor's Course: ");
+					System.out.println("Course: ");
 					course = scanner.next();
-					output.write(course + "\n");
+					bw.write(course);
+					bw.newLine();
 					
-					System.out.println("Enter the Professor's year: ");
+					System.out.println("year: ");
 					year = scanner.next();
-					output.write(year + "\n");
+					bw.write(year);
+					bw.newLine();
 					
-					System.out.println("Enter the Professor's Note: ");
+					System.out.println("Notes: ");
 					notes = scanner.next();
-					output.write(notes + "\n");
-					output.write("*" + "\n");
+					bw.write(notes);
+					bw.newLine();
+					bw.write("*");
 					System.out.println("The Course was successfuly saved!!\n\n*****\n");
 				}
 				else if(choise == 'n')
@@ -231,6 +246,7 @@ public class ProfessorService
 			e.printStackTrace();
 		}
 	}
+	
 	// Get professor by name
 	
 	public void getProfessorByName(String professorName)
@@ -264,6 +280,54 @@ public class ProfessorService
 		for(int i = 0; i < list.size(); i++)
 		{
 			if(professorName.equals(list.elementAt(i)))
+			{
+				System.out.println("The professor information is: ");
+				System.out.println("Name: " + list.elementAt(i));
+				System.out.println("House: " + list.elementAt(i + 1));
+				System.out.println("Blood Status: " + list.elementAt(i + 2));
+				System.out.println("School: " + list.elementAt(i + 3));
+				System.out.println("BirthDay: " + list.elementAt(i + 4));
+				System.out.println("Course: " + list.elementAt(i + 5));
+				System.out.println("Year: " + list.elementAt(i + 6));
+				System.out.println("Notes: " + list.elementAt(i + 7));
+				System.out.println("\n\n*****\n");
+			}
+		}
+	}
+
+	// Search professor via name
+	
+	public void searchProfessorByName(String professorName)
+	{
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter the name of the house you want: ");
+		Vector<String> list = new Vector<String>();
+		professorName = scanner.nextLine();
+		try
+		{
+			File file = new File("ProfessorDB.txt");
+			if (file.exists())
+			{
+				System.out.println("***    Reading file...    ***\n\n");
+				BufferedReader input = new BufferedReader(new FileReader(file));
+				String line;
+				while ((line = input.readLine()) != null)
+				{
+					list.add(line);
+				}
+			}
+		}
+		catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		for(int i = 0; i < list.size(); i++)
+		{
+			if(list.elementAt(i).contains(professorName))
 			{
 				System.out.println("The professor information is: ");
 				System.out.println("Name: " + list.elementAt(i));

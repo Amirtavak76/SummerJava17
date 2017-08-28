@@ -21,8 +21,7 @@ public class SchoolService
 				+ "3. Show school by name \n"
 				+ "4. Show all schools \n"
 				+ "5. Edit school information \n"
-				+ "6. Delete a school"
-				+ "7. Search school by name \n");
+				+ "6. Delete a school");
 		int choise = scanner.nextInt();
 		switch(choise)
 		{
@@ -228,7 +227,6 @@ public class SchoolService
 					bw.write(location);
 					bw.newLine();
 					bw.write("*");
-					bw.newLine();
 					System.out.println("\n\n*****\n\nThe school saved successfuly!\n\n");
 					break;
 				}
@@ -239,6 +237,7 @@ public class SchoolService
 				else
 				{
 					System.out.println("Please input a variable choise!!");
+					break;
 				}
 			}
 			bw.close();
