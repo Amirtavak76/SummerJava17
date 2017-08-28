@@ -1,11 +1,9 @@
 package service;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.Vector;
@@ -152,85 +150,6 @@ public class ProfessorService
 		}
 	}
 	
-	// Set data to file
-	
-	public void setData()
-	{
-		Scanner scanner = new Scanner (System.in);
-		String name, house, bloodStatus, school, birthDay, course, year, notes;
-		char choise;
-		try
-		{
-			File file = new File("ProfessorDB.txt");
-			if(!file.exists())
-			{
-				file.createNewFile();
-				System.out.println("Creating new file...");
-			}
-			else
-			{
-				System.out.println("Updating file...");
-			}
-			BufferedWriter output = new BufferedWriter(new FileWriter(file));
-			while(true)
-			{
-				System.out.println("Do you wanna add a new Professor to the system?");
-				System.out.println("1. Press 'Y' if you want!\n2. Press 'N' if you dont!");
-				choise = scanner.next().charAt(0);
-				if (choise == 'y')
-				{
-					System.out.println("Enter the Professor Name: ");
-					name = scanner.next();
-					output.write(name + "\n");
-					
-					System.out.println("Enter the Professor's house name: ");
-					house = scanner.next();
-					output.write(house + "\n");
-					
-					System.out.println("Enter the Professor Blood Status: ");
-					bloodStatus = scanner.next();
-					output.write(bloodStatus + "\n");
-					
-					System.out.println("Enter the Professor School: ");
-					school = scanner.next();
-					output.write(school + "\n");
-					
-					System.out.println("Enter the Professor BirthDay: ");
-					birthDay = scanner.next();
-					output.write(birthDay + "\n");
-					
-					System.out.println("Enter the Professor's Course: ");
-					course = scanner.next();
-					output.write(course + "\n");
-					
-					System.out.println("Enter the Professor's year: ");
-					year = scanner.next();
-					output.write(year + "\n");
-					
-					System.out.println("Enter the Professor's Note: ");
-					notes = scanner.next();
-					output.write(notes + "\n");
-					output.write("*" + "\n");
-					System.out.println("The Course was successfuly saved!!\n\n*****\n");
-				}
-				else if(choise == 'n')
-				{
-					System.out.println("Okay! try it later!");
-					break;
-				}
-				else
-				{
-					System.out.println("Please input a variable choise!!");
-					break;
-				}
-				output.close();
-			}
-		}
-		catch(IOException e)
-		{
-			e.printStackTrace();
-		}
-	}
 	// Get professor by name
 	
 	public void getProfessorByName(String professorName)

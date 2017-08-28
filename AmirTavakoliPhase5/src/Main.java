@@ -17,7 +17,7 @@ public class Main
 			Scanner scanner = new Scanner(System.in);
 			System.out.println("Welcome to the Harry Potter online wizard\n\n");
 			System.out.println("Here is the main menu and you can choose the operation you want\n");
-			System.out.println("Choose whatever you want with an integer!!");
+			System.out.println("Choose whatever you want with an integer!!\n");
 			System.out.println("1. School Menu \n2. Course Menu \n3. House Menu \n4. Professor Menu \n5. Student Menu \n6. Person Menu");
 			int choise = scanner.nextInt();
 			switch(choise)

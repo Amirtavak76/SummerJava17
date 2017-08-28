@@ -43,6 +43,74 @@ public class PersonService
 		}
 	}
 	
+	// Set data to file
+	
+	public void setData()
+	{
+		Scanner scanner = new Scanner (System.in);
+		String name, house, bloodStatus, school, birthDay;
+		char choise;
+		try
+		{
+			File file = new File("PersonDB.txt");
+			if(!file.exists())
+			{
+				file.createNewFile();
+				System.out.println("Creating new file...");
+			}
+			else
+			{
+				System.out.println("Updating file...");
+			}
+			BufferedWriter output = new BufferedWriter(new FileWriter(file));
+			while(true)
+			{
+				System.out.println("Do you wanna add a new Person to the system?");
+				System.out.println("1. Press 'Y' if you want!\n2. Press 'N' if you dont!");
+				choise = scanner.next().charAt(0);
+				if (choise == 'y')
+				{
+					System.out.println("Enter the Person's Name: ");
+					name = scanner.next();
+					output.write(name + "\n");
+					
+					System.out.println("Enter the Person's house name: ");
+					house = scanner.next();
+					output.write(house + "\n");
+					
+					System.out.println("Enter the Person's Blood Status: ");
+					bloodStatus = scanner.next();
+					output.write(bloodStatus + "\n");
+					
+					System.out.println("Enter the Person's School: ");
+					school = scanner.next();
+					output.write(school + "\n");
+					
+					System.out.println("Enter the Person's BirthDay: ");
+					birthDay = scanner.next();
+					output.write(birthDay + "\n");
+					
+					output.write("*" + "\n");
+					System.out.println("The Student was successfuly saved!!\n\n*****\n");
+				}
+				else if(choise == 'n')
+				{
+					System.out.println("Okay! try it later!");
+					break;
+				}
+				else
+				{
+					System.out.println("Please input a variable choise!!");
+					break;
+				}
+				output.close();
+			}
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
 	// Get Data from file
 	
 	public void getData(String data)

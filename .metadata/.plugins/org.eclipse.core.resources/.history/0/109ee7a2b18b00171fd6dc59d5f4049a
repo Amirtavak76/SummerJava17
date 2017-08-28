@@ -20,7 +20,7 @@ public class StudentService
 		switch(choise)
 		{
 		case 1:
-			setData();
+			System.out.println("Not available");
 			break;
 		
 		case 2:
@@ -43,85 +43,6 @@ public class StudentService
 		}
 	}
 	
-	// Set data to file
-	
-	public void setData()
-	{
-		Scanner scanner = new Scanner (System.in);
-		String name, house, bloodStatus, school, birthDay, course;
-		int numOfCourses;
-		char choise;
-		try
-		{
-			File file = new File("StudentDB.txt");
-			if(!file.exists())
-			{
-				file.createNewFile();
-				System.out.println("Creating new file...");
-			}
-			else
-			{
-				System.out.println("Updating file...");
-			}
-			FileWriter output = new FileWriter(file, true);
-			BufferedWriter bw = new BufferedWriter(output);
-			while(true)
-			{
-				System.out.println("Do you wanna add a new Student to the system?");
-				System.out.println("1. Press 'Y' if you want!\n2. Press 'N' if you dont!");
-				choise = scanner.next().charAt(0);
-				if (choise == 'y')
-				{
-					System.out.println("Enter the Student Name: ");
-					name = scanner.next();
-					output.write(name + "\n");
-					
-					System.out.println("Enter the Student's house name: ");
-					house = scanner.next();
-					output.write(house + "\n");
-					
-					System.out.println("Enter the Student Blood Status: ");
-					bloodStatus = scanner.next();
-					output.write(bloodStatus + "\n");
-					
-					System.out.println("Enter the Student School: ");
-					school = scanner.next();
-					output.write(school + "\n");
-					
-					System.out.println("Enter the Student BirthDay: ");
-					birthDay = scanner.next();
-					output.write(birthDay + '\n');
-					
-					System.out.println("Enter the Studebnt's Number of Course: ");
-					numOfCourses = scanner.nextInt();
-					output.write(numOfCourses + "\n");
-					System.out.print("Enter the course names: ");
-					for(int j = 0; j < numOfCourses; j++)
-					{
-						course = scanner.next();
-						output.write(course + '\n');
-					}
-					output.write("*" + "\n");
-					System.out.println("The Student was successfuly saved!!\n\n*****\n");
-				}
-				else if(choise == 'n')
-				{
-					System.out.println("Okay! try it later!");
-					break;
-				}
-				else
-				{
-					System.out.println("Please input a variable choise!!");
-					break;
-				}
-				output.close();
-			}
-		}
-		catch(IOException e)
-		{
-			e.printStackTrace();
-		}
-	}
 	// Get file from data
 	
 	public void getData(String data)

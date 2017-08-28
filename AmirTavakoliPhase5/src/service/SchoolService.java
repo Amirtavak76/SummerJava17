@@ -14,8 +14,15 @@ public class SchoolService
 	{
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Welcome to the school menu\n");
-		System.out.println("What do you wanna do? Choose it with an integer.\n");
-		System.out.println("1. Create a new school \n2. Search school via name \n3. Edit school information \n4. Show all schools \n5. Delete a school");
+		System.out.println("What do you wanna do?"
+				+ "  Choose it with an integer.\n");
+		System.out.println("1. Create a new school \n"
+				+ "2. Search school via name \n"
+				+ "3. Show school by name \n"
+				+ "4. Show all schools \n"
+				+ "5. Edit school information \n"
+				+ "6. Delete a school"
+				+ "7. Search school by name \n");
 		int choise = scanner.nextInt();
 		switch(choise)
 		{
@@ -24,11 +31,11 @@ public class SchoolService
 			break;
 		
 		case 2:
-			getSchoolByName(null);
+			searchSchoolByName(null);
 			break;
 			
 		case 3:
-			System.out.println("Not available now");
+			showSchoolByName(null);
 			break;
 			
 		case 4:
@@ -139,8 +146,8 @@ public class SchoolService
 	public void setData()
 	{
 		Scanner scanner = new Scanner (System.in);
-		String schoolName, houseName, studentsName, professorsName, coursesName;
-		int numOfHouse, numOfStudents, numOfProfessors, numOfCourses;
+		String schoolName, houseName, studentsName, professorsName, coursesName, location;
+		String numOfHouse, numOfStudent, numOfProfessor, numOfCourse;
 		char choise;
 		try
 		{
@@ -148,59 +155,82 @@ public class SchoolService
 			if(!file.exists())
 			{
 				file.createNewFile();
-				System.out.println("Creating new file...");
+				System.out.println("Creating new file...\n");
 			}
 			else
 			{
-				System.out.println("Updating file...");
+				System.out.println("Updating file...\n");
 			}
-			BufferedWriter output = new BufferedWriter(new FileWriter(file));
+			FileWriter output = new FileWriter(file, true);
+			BufferedWriter bw = new BufferedWriter(output);
 			while(true)
 			{
-				System.out.println("Do you wanna add a new School to the system?");
-				System.out.println("1. Press 'Y' if you want!\n2. Press 'N' if you dont!");
+				System.out.println("Do you wanna add a new School to the system?\n");
+				System.out.println("1. Press 'Y' if you want!\n2. Press 'N' if you dont!\n");
 				choise = scanner.next().charAt(0);
 				if(choise == 'y')
 				{
-					System.out.println("Enter the school name you wanna added to the system:");
+					System.out.print("Complete the information of the new School.\n");
+					System.out.print("Name: ");
 					schoolName = scanner.next();
-					output.write(schoolName + "\n");
-					System.out.println("Enter the number of houses the school has:");
-					numOfHouse = scanner.nextInt();
-					output.write(numOfHouse + "\n");
-					for (int i = 0; i < numOfHouse; i++)
+					bw.write(schoolName);
+					bw.newLine();
+					System.out.print("Number of Houses: ");
+					numOfHouse = scanner.next();
+					bw.write(numOfHouse);
+					int numOfHouses = Integer.parseInt(numOfHouse);
+					bw.newLine();
+					for (int i = 0; i < numOfHouses; i++)
 					{
-						System.out.println("Enter the school house name: ");
+						System.out.print("House Name: ");
 						houseName = scanner.next();
-						output.write(houseName + "\n");
+						bw.write(houseName );
+						bw.newLine();
 					}
-					System.out.println("Enter the number of students the school has:");
-					numOfStudents = scanner.nextInt();
-					output.write(numOfStudents + "\n");
+					System.out.print("Number of Students: ");
+					numOfStudent = scanner.next();
+					bw.write(numOfStudent);
+					bw.newLine();
+					int numOfStudents = Integer.parseInt(numOfStudent);
 					for (int i = 0; i < numOfStudents; i++)
 					{
-						System.out.println("Enter the school students name: ");
+						System.out.print("Students Name: ");
 						studentsName = scanner.next();
-						output.write(studentsName + "\n");
+						bw.write(studentsName);
+						bw.newLine();
 					}
-					System.out.println("Enter the number of professors the school has:");
-					numOfProfessors = scanner.nextInt();
-					output.write(numOfProfessors + "\n");
+					System.out.print("Number of Professors: ");
+					numOfProfessor = scanner.next();
+					bw.write(numOfProfessor);
+					bw.newLine();
+					int numOfProfessors = Integer.parseInt(numOfProfessor);
 					for (int i = 0; i < numOfProfessors; i++)
 					{
-						System.out.println("Enter the school professors name: ");
+						System.out.print("Professor Names: ");
 						professorsName = scanner.next();
-						output.write(professorsName + "\n");
+						bw.write(professorsName);
+						bw.newLine();
 					}
-					System.out.println("Enter the number of courses the school has:");
-					numOfCourses = scanner.nextInt();
-					output.write(numOfCourses + "\n");
+					System.out.print("Number of Courses: ");
+					numOfCourse = scanner.next();
+					bw.write(numOfCourse);
+					bw.newLine();
+					int numOfCourses = Integer.parseInt(numOfCourse);
 					for (int i = 0; i < numOfCourses; i++)
 					{
-						System.out.println("Enter the school courses name: ");
+						System.out.print("Course Names: ");
 						coursesName = scanner.next();
-						output.write(coursesName + "\n");
+						bw.write(coursesName);
+						bw.newLine();
 					}
+					System.out.print("Location: ");
+					location = scanner.next();
+					bw.write(location);
+					bw.newLine();
+					bw.write("*");
+					bw.newLine();
+					System.out.println("\n\n*****\n\nThe school saved successfuly!\n\n");
+					break;
 				}
 				else if (choise == 'n')
 				{
@@ -211,18 +241,18 @@ public class SchoolService
 					System.out.println("Please input a variable choise!!");
 				}
 			}
-			output.close();
+			bw.close();
 			System.out.println("Finish writing to file!");
 		}
 		catch(IOException e)
 		{
-			e.printStackTrace();
+		    System.out.println("COULD NOT LOG!!");
 		}
 	}
+
+	// Search school by its name
 	
-	// Get school by its name
-	
-	public void getSchoolByName(String schoolName)
+	public void searchSchoolByName(String schoolName)
 	{
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter the name of the school you want: ");
@@ -251,45 +281,48 @@ public class SchoolService
 		{
 			e.printStackTrace();
 		}
+		boolean con = false;
 		for(int i = 0; i < list.size(); i++)
 		{
-			if (schoolName.equals(list.elementAt(i)))
+			if (list.elementAt(i).contains(schoolName))
 			{
 				int line = i;
-				System.out.println("The school name you have searched is: " + list.elementAt(line));
-				System.out.println("The number of the houses of the school you have searched is: " + list.elementAt(i + 1));
+				System.out.println("The school information you have searched is: ");
+				System.out.println("Name: " + list.elementAt(line));
+				System.out.println("Number of Houses: " + list.elementAt(i + 1));
 				house = Integer.parseInt(list.elementAt(i + 1)); 
-				System.out.print("The name of the houses are: ");
+				System.out.print("House Names: ");
 				for (int j = i + 2; j <= i + house + 1; j++)
 				{
 					System.out.print(list.elementAt(j) + ", ");
 				}
-				System.out.println("\nThe number of the students of the school is: " + list.elementAt(i + 2 + house));
+				System.out.println("\nNumber of Students: " + list.elementAt(i + 2 + house));
 				student = Integer.parseInt(list.elementAt(i + 2 + house));
-				System.out.print("The name of the students are: ");
+				System.out.print("Student Namese: ");
 				for (int j = i + 3 + house; j < i + house + student + 3; j++)
 				{
 					System.out.print(list.elementAt(j) + ", ");
 				}
-				System.out.println("\nThe number of the professors of the school is: " + list.elementAt(i + 3 + house + student));
+				System.out.println("\nNumber of Professors: " + list.elementAt(i + 3 + house + student));
 				professor = Integer.parseInt(list.elementAt(i + 3 + house + student));
-				System.out.print("The name of the professors are: ");
+				System.out.print("professor Names: ");
 				for (int j = i + 4 + house + student; j < i + house + student + professor + 4; j++)
 				{
 					System.out.print(list.elementAt(j) + ", ");
 				}
-				System.out.println("\nThe number of the courses of the school is: " + list.elementAt(i + 4 + house + student + professor));
+				System.out.println("\nNumber of Courses: " + list.elementAt(i + 4 + house + student + professor));
 				course = Integer.parseInt(list.elementAt(i + 4 + house + student + professor));
-				System.out.print("The name of the professors are: ");
+				System.out.print("Course Names: ");
 				for (int j = i + 5 + house + student + professor; j < i + house + student + professor + course + 5; j++)
 				{
 					System.out.print(list.elementAt(j) + ", ");
 				}
-				System.out.println("\nThe location of the school is: " + list.elementAt(i + 5 + house + student + professor + course));
+				System.out.println("\nLocation: " + list.elementAt(i + 5 + house + student + professor + course));
+				System.out.println("\n\n*****\n");
 			}
 			else
 			{
-				System.out.println("There is no school with this name in the system!!");
+				System.out.println("There is no school with this name in the system!!\n\n*****\n");
 				break;
 			}
 		}
@@ -634,6 +667,84 @@ public class SchoolService
 			if (schoolName.equals(list.elementAt(i)))
 			{
 				
+			}
+		}
+	}
+	
+	// Show School By name
+	
+	public void showSchoolByName(String schoolName)
+	{
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter the name of the school you want: ");
+		Vector<String> list = new Vector<String>();
+		int house = 0, student = 0, professor = 0, course = 0;
+		schoolName = scanner.nextLine();
+		try
+		{
+			  File file = new File("SchoolDB.txt");
+			  if (file.exists())
+			  {
+				  System.out.println("***    Reading file...    ***\n\n");
+				  BufferedReader input = new BufferedReader(new FileReader(file));
+				  String line;
+				  while ((line = input.readLine()) != null)
+				  {
+					  list.add(line);
+				  }
+			  }
+		}
+		catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		for(int i = 0; i < list.size(); i++)
+		{
+			if (schoolName.equals(list.elementAt(i)))
+			{
+				int line = i;
+				System.out.println("The school information you have searched is: ");
+				System.out.println("Name: " + list.elementAt(line));
+				System.out.println("Number of Houses: " + list.elementAt(i + 1));
+				house = Integer.parseInt(list.elementAt(i + 1)); 
+				System.out.print("House Names: ");
+				for (int j = i + 2; j <= i + house + 1; j++)
+				{
+					System.out.print(list.elementAt(j) + ", ");
+				}
+				System.out.println("\nNumber of Students: " + list.elementAt(i + 2 + house));
+				student = Integer.parseInt(list.elementAt(i + 2 + house));
+				System.out.print("Student Namese: ");
+				for (int j = i + 3 + house; j < i + house + student + 3; j++)
+				{
+					System.out.print(list.elementAt(j) + ", ");
+				}
+				System.out.println("\nNumber of Professors: " + list.elementAt(i + 3 + house + student));
+				professor = Integer.parseInt(list.elementAt(i + 3 + house + student));
+				System.out.print("professor Names: ");
+				for (int j = i + 4 + house + student; j < i + house + student + professor + 4; j++)
+				{
+					System.out.print(list.elementAt(j) + ", ");
+				}
+				System.out.println("\nNumber of Courses: " + list.elementAt(i + 4 + house + student + professor));
+				course = Integer.parseInt(list.elementAt(i + 4 + house + student + professor));
+				System.out.print("Course Names: ");
+				for (int j = i + 5 + house + student + professor; j < i + house + student + professor + course + 5; j++)
+				{
+					System.out.print(list.elementAt(j) + ", ");
+				}
+				System.out.println("\nLocation: " + list.elementAt(i + 5 + house + student + professor + course));
+				System.out.println("\n\n*****\n");
+				break;
+			}
+			else
+			{
+				System.out.println("There is no school with this name in the system!!\n\n*****\n");
+				break;
 			}
 		}
 	}

@@ -21,7 +21,7 @@ public class CourseService
 	public void courseMenu()
 	{
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("Welcome to the course menu\n");     
+		System.out.println("Welcome to the course menu\n");
 		System.out.println("What do you wanna do? Choose it with an integer.\n");
 		System.out.println("1. Create a new course \n2. Search course via name \n3. Edit course information \n4. Show all courses \n5. Delete a course");
 		int choise = scanner.nextInt();
@@ -105,7 +105,6 @@ public class CourseService
 						studentName = scanner.next();
 						output.write(studentName + "\n");
 					}
-					output.write("*" + "\n");
 					System.out.println("The Course was successfuly saved!!\n\n*****\n");
 				}
 				else if(choise == 'n')

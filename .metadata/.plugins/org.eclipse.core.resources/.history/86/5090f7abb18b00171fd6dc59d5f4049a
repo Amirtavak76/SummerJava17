@@ -21,7 +21,7 @@ public class HouseService
 		switch(choise)
 		{
 		case 1:
-			setData();
+			System.out.println("Not available");
 			break;
 		
 		case 2:
@@ -111,7 +111,10 @@ public class HouseService
 			e.printStackTrace();
 		}
 	}
-	
+	Name
+	School 
+	Number of students 
+	Student names
 	// Set data to file
 	
 	public void setData()
@@ -142,23 +145,23 @@ public class HouseService
 				{
 					System.out.println("Enter the house Name: ");
 					name = scanner.next();
-					output.append(name + "\n");
+					output.write(name + "\n");
 					
 					System.out.println("Enter the School Name of the House: ");
 					school = scanner.next();
-					output.append(school + "\n");
+					output.write(school + "\n");
 					
 					System.out.println("Enter the House Number of Students: ");
 					numOfStudents = scanner.nextInt();
-					output.append(numOfStudents + "\n");
+					output.write(numOfStudents + "\n");
 					
 					System.out.println("Enter the House Student Names: ");
 					for(int i = 0; i < numOfStudents; i++)
 					{
 						studentName = scanner.next();
-						output.append(studentName + "\n");
+						output.write(studentName + "\n");
 					}
-					output.append("*" + "\n");
+					output.write("*" + "\n");
 					System.out.println("The House was successfuly saved!!\n\n*****\n");
 				}
 				else if(choise == 'n')

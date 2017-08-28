@@ -21,7 +21,7 @@ public class HouseService
 		switch(choise)
 		{
 		case 1:
-			setData();
+			System.out.println("Not available");
 			break;
 		
 		case 2:
@@ -112,73 +112,6 @@ public class HouseService
 		}
 	}
 	
-	// Set data to file
-	
-	public void setData()
-	{
-		Scanner scanner = new Scanner (System.in);
-		String name, school, studentName;
-		int numOfStudents;
-		char choise;
-		try
-		{
-			File file = new File("HouseDB.txt");
-			if(!file.exists())
-			{
-				file.createNewFile();
-				System.out.println("Creating new file...");
-			}
-			else
-			{
-				System.out.println("Updating file...");
-			}
-			BufferedWriter output = new BufferedWriter(new FileWriter(file));
-			while(true)
-			{
-				System.out.println("Do you wanna add a new house to the system?");
-				System.out.println("1. Press 'Y' if you want!\n2. Press 'N' if you dont!");
-				choise = scanner.next().charAt(0);
-				if (choise == 'y')
-				{
-					System.out.println("Enter the house Name: ");
-					name = scanner.next();
-					output.append(name + "\n");
-					
-					System.out.println("Enter the School Name of the House: ");
-					school = scanner.next();
-					output.append(school + "\n");
-					
-					System.out.println("Enter the House Number of Students: ");
-					numOfStudents = scanner.nextInt();
-					output.append(numOfStudents + "\n");
-					
-					System.out.println("Enter the House Student Names: ");
-					for(int i = 0; i < numOfStudents; i++)
-					{
-						studentName = scanner.next();
-						output.append(studentName + "\n");
-					}
-					output.append("*" + "\n");
-					System.out.println("The House was successfuly saved!!\n\n*****\n");
-				}
-				else if(choise == 'n')
-				{
-					System.out.println("Okay! try it later!");
-					break;
-				}
-				else
-				{
-					System.out.println("Please input a variable choise!!");
-					break;
-				}
-				output.close();
-			}
-		}
-		catch(IOException e)
-		{
-			e.printStackTrace();
-		}
-	}
 	// Get house with its name
 	
 	public void getHouseByName(String houseName)
